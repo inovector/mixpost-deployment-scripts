@@ -241,7 +241,7 @@ success "Base packages installed."
 # ============================================================================
 step 2 "Installing PHP ${PHP_VERSION} and extensions..."
 
-add-apt-repository -y -q ppa:ondrej/php
+add-apt-repository -y ppa:ondrej/php > /dev/null 2>&1
 
 apt-get update -qq
 

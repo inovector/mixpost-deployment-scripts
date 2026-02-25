@@ -643,9 +643,8 @@ CRONCONF
 chmod 0644 /etc/cron.d/mixpost
 
 # Restart services
+systemctl enable supervisor
 systemctl restart supervisor
-supervisorctl reread
-supervisorctl update
 systemctl restart php${PHP_VERSION}-fpm
 systemctl restart nginx
 systemctl restart cron

@@ -213,8 +213,10 @@ export DEBIAN_FRONTEND=noninteractive
 # Clean up stale repo configs from previous installs
 rm -f /etc/apt/sources.list.d/mysql.list
 rm -f /etc/apt/sources.list.d/ppa_ondrej_php.list
+rm -f /etc/apt/sources.list.d/php-sury.list
 rm -f /etc/apt/keyrings/mysql.gpg
 rm -f /etc/apt/keyrings/ppa_ondrej_php.gpg
+rm -f /etc/apt/keyrings/deb.sury.org-php.gpg
 
 apt-get update -qq
 apt-get upgrade -y -qq
@@ -240,10 +242,7 @@ success "Base packages installed."
 # ============================================================================
 step 2 "Installing PHP ${PHP_VERSION} and extensions..."
 
-mkdir -p /etc/apt/keyrings
-curl -sSLo /etc/apt/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
-echo "deb [signed-by=/etc/apt/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ ${UBUNTU_CODENAME} main" \
-    > /etc/apt/sources.list.d/php-sury.list
+add-apt-repository -y ppa:ondrej/php
 
 apt-get update -qq
 

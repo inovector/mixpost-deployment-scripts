@@ -463,6 +463,7 @@ success "Media processing libraries installed."
 # ============================================================================
 step 8 "Installing Mixpost Pro application..."
 
+rm -rf ${MIXPOST_DIR}
 mkdir -p ${MIXPOST_DIR}
 cd ${MIXPOST_DIR}
 
